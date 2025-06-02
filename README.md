@@ -27,385 +27,229 @@ Publish the website in the LocalHost.
 
 ## PROGRAM :
 ```
-```
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dribbble Clone - Discover Design</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<style>
-    :root {
-        --dribbble-pink: #ea4c89;
-        --dribbble-dark: #1a1a1a;
-    }
-    
-    body {
-        font-family: 'Helvetica Neue', sans-serif;
-    }
-    
-    .navbar-brand {
-        font-weight: bold;
-        font-size: 1.5rem;
-        color: var(--dribbble-pink) !important;
-    }
-    
-    .btn-dribbble {
-        background-color: var(--dribbble-pink);
-        border-color: var(--dribbble-pink);
-        color: white;
-        border-radius: 25px;
-        padding: 8px 20px;
-        font-weight: 500;
-    }
-    
-    .btn-dribbble:hover {
-        background-color: #d63384;
-        border-color: #d63384;
-        color: white;
-    }
-    
-    .hero-section {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 100px 0;
-    }
-    
-    .shot-card {
-        border: none;
-        border-radius: 15px;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 30px;
-    }
-    
-    .shot-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    
-    .shot-image {
-        height: 250px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-    }
-    
-    .shot-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(234, 76, 137, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .shot-card:hover .shot-overlay {
-        opacity: 1;
-    }
-    
-    .shot-stats {
-        color: white;
-        font-size: 1.1rem;
-    }
-    
-    .designer-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-    
-    .stats-section {
-        background-color: #f8f9fa;
-        padding: 80px 0;
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: var(--dribbble-pink);
-    }
-    
-    footer {
-        background-color: var(--dribbble-dark);
-        color: white;
-        padding: 60px 0 30px 0;
-    }
-    
-    .footer-link {
-        color: #adb5bd;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    
-    .footer-link:hover {
-        color: var(--dribbble-pink);
-    }
-    
-    .social-icon {
-        font-size: 1.5rem;
-        margin: 0 10px;
-        color: #adb5bd;
-        transition: color 0.3s ease;
-    }
-    
-    .social-icon:hover {
-        color: var(--dribbble-pink);
-    }
-    
-    @media (max-width: 768px) {
-        .hero-section {
-            padding: 60px 0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero {
+            background: url("KFC\ EPIC\ Campaign.jpeg") no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
         }
-        
-        .hero-section h1 {
-            font-size: 2rem;
+        .menu-item img {
+            height: 200px; /* Increased height for better visibility */
+            object-fit: cover;
+            margin: 0 auto; /* Center the images */
+            display: block; /* Ensure images are block elements */
         }
-        
-        .shot-image {
-            height: 200px;
+        .footer {
+            background-color: #343a40;
+            color: white;
         }
-    }
-</style>
+        .menu-section {
+            background-color: #f8f9fa; /* Light background for the menu section */
+        }
+    </style>
 </head>
 <body>
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <i class="fas fa-basketball-ball me-2"></i>Dribbble
-        </a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#shots">Shots</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#designers">Designers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#teams">Teams</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#community">Community</a>
-                </li>
-            </ul>
-            
-            <div class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search..." style="width: 200px;">
-                <button class="btn btn-outline-secondary me-2">Sign in</button>
-                <button class="btn btn-dribbble">Sign up</button>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Desert Hunters</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">Discover the world's top designers & creatives</h1>
-                <p class="lead mb-4">Dribbble is the leading destination to find & showcase creative work and home to the world's best design professionals.</p>
-                <button class="btn btn-light btn-lg me-3">Sign up</button>
-                <button class="btn btn-outline-light btn-lg">Learn more</button>
-            </div>
-            <div class="col-lg-6 text-center">
-                <img src="https://ik.imagekit.io/0tydz7atd/Screenshot%202025-05-22%20081827.png?updatedAt=1747882164863" alt="Hero Image" class="img-fluid rounded-3">
-            </div>
-        </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Desert Hunters</h1>
+        <p>Experience the best food in town!</p>
     </div>
-</section>
 
-<!-- Featured Shots -->
-<section class="py-5" id="shots">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h2 class="display-5 fw-bold mb-3">Popular shots</h2>
-                <p class="text-muted">Explore trending designs from the community</p>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shot-card">
-                    <div class="shot-image" style="background-image: url('https://ik.imagekit.io/0tydz7atd/images%20(2).jpeg?updatedAt=1747882905078');">
-                        <div class="shot-overlay">
-                            <div class="shot-stats">
-                                <i class="far fa-heart me-2"></i>124
-                                <i class="far fa-eye ms-3 me-2"></i>2.1k
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <img src="https://ik.imagekit.io/0tydz7atd/images%20(1).jpeg?updatedAt=1747882817528" alt="Designer" class="designer-avatar me-3">
-                            <div>
-                                <h6 class="mb-0">Sarah Johnson</h6>
-                                <small class="text-muted">UI/UX Designer</small>
-                            </div>
+    <!-- Menu Section -->
+    <section id="menu" class="py-5 menu-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Menu</h2>
+            <div class="row g-4">
+                
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 2.png" class="card-img-top" alt="Dish 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Primavera</h5>
+                            <p class="card-text">Delicious pasta tossed with seasonal vegetables.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shot-card">
-                    <div class="shot-image" style="background-image: url('https://ik.imagekit.io/0tydz7atd/8a8f69106249811.Y3JvcCw2OTk5LDU0NzUsMCww.jpg?updatedAt=1747883108646');">
-                        <div class="shot-overlay">
-                            <div class="shot-stats">
-                                <i class="far fa-heart me-2"></i>89
-                                <i class="far fa-eye ms-3 me-2"></i>1.5k
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <img src="https://ik.imagekit.io/0tydz7atd/images.jpeg?updatedAt=1747883035646" alt="Designer" class="designer-avatar me-3">
-                            <div>
-                                <h6 class="mb-0">Mike Chen</h6>
-                                <small class="text-muted">Brand Designer</small>
-                            </div>
+                
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy.png" class="card-img-top" alt="Dish 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Grilled Chicken</h5>
+                            <p class="card-text">Juicy grilled chicken served with fresh vegetables.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shot-card">
-                    <div class="shot-image" style="background-image: url('https://ik.imagekit.io/0tydz7atd/raf,360x360,075,t,fafafa_ca443f4786.jpg?updatedAt=1747883364478');">
-                        <div class="shot-overlay">
-                            <div class="shot-stats">
-                                <i class="far fa-heart me-2"></i>156
-                                <i class="far fa-eye ms-3 me-2"></i>3.2k
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <img src="https://ik.imagekit.io/0tydz7atd/EmilyRodriguez_1-23-25_MargotMurphy-e1737748629702-1200x1113.jpg?updatedAt=1747883224610" alt="Designer" class="designer-avatar me-3">
-                            <div>
-                                <h6 class="mb-0">Emily Rodriguez</h6>
-                                <small class="text-muted">Illustrator</small>
-                            </div>
+                
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 5.png" class="card-img-top" alt="Dish 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Margherita Pizza</h5>
+                            <p class="card-text">Wood-fired pizza topped with fresh mozzarella.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shot-card">
-                    <div class="shot-image" style="background-image: url('https://ik.imagekit.io/0tydz7atd/letter-w-modern-technological-logo_575535-180.avif?updatedAt=1747883459289');">
-                        <div class="shot-overlay">
-                            <div class="shot-stats">
-                                <i class="far fa-heart me-2"></i>203
-                                <i class="far fa-eye ms-3 me-2"></i>4.1k
-                            </div>
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 4.png" class="card-img-top" alt="Dish 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Caesar Salad</h5>
+                            <p class="card-text">Crisp romaine lettuce with Caesar dressing.</p>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <img src="https://ik.imagekit.io/0tydz7atd/RR_AlexThompson_colorcutout-800x627.webp?updatedAt=1747883499535" alt="Designer" class="designer-avatar me-3">
-                            <div>
-                                <h6 class="mb-0">Alex Thompson</h6>
-                                <small class="text-muted">Web Designer</small>
-                            </div>
+                </div>
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 6.png" class="card-img-top" alt="Dish 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Tiramisu</h5>
+                            <p class="card-text">Classic Italian dessert with coffee and mascarpone.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 7.png" class="card-img-top" alt="Dish 7">
+                        <div class="card-body">
+                            <h5 class="card-title">Steak Frites</h5>
+                            <p class="card-text">Grilled steak served with crispy fries.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 8.png" class="card-img-top" alt="Dish 8">
+                        <div class="card-body">
+                            <h5 class="card-title">Seafood Paella</h5>
+                            <p class="card-text">Spanish-style rice with fresh seafood.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 3.png" class="card-img-top" alt="Dish 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic Burger</h5>
+                            <p class="card-text">Our signature burger with fresh ingredients.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item">
+                    <div class="card">
+                        <img src="image copy 9.png" class="card-img-top" alt="Dish 9">
+                        <div class="card-body">
+                            <h5 class="card-title">Cheesecake</h5>
+                            <p class="card-text">Creamy cheesecake with a graham cracker crust.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5 class="mb-3">For designers</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="footer-link">Go Pro!</a></li>
-                    <li><a href="#" class="footer-link">Explore design work</a></li>
-                    <li><a href="#" class="footer-link">Design blog</a></li>
-                    <li><a href="#" class="footer-link">Overtime podcast</a></li>
-                    <li><a href="#" class="footer-link">Playoffs</a></li>
-                </ul>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5 class="mb-3">Hire designers</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="footer-link">Post a job opening</a></li>
-                    <li><a href="#" class="footer-link">Post a freelance project</a></li>
-                    <li><a href="#" class="footer-link">Search for designers</a></li>
-                    <li><a href="#" class="footer-link">Brands</a></li>
-                    <li><a href="#" class="footer-link">Advertise with us</a></li>
-                </ul>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5 class="mb-3">Company</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="footer-link">About</a></li>
-                    <li><a href="#" class="footer-link">Careers</a></li>
-                    <li><a href="#" class="footer-link">Support</a></li>
-                    <li><a href="#" class="footer-link">Media kit</a></li>
-                    <li><a href="#" class="footer-link">Testimonials</a></li>
-                </ul>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5 class="mb-3">Directories</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="footer-link">Design jobs</a></li>
-                    <li><a href="#" class="footer-link">Designers for hire</a></li>
-                    <li><a href="#" class="footer-link">Freelance designers</a></li>
-                    <li><a href="#" class="footer-link">Tags</a></li>
-                    <li><a href="#" class="footer-link">Places</a></li>
-                </ul>
-            </div>
+    <!-- About Us Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">About Us</h2>
+            <p class="text-center">At Desert Hunters, we believe in serving fresh, high-quality food made with love. Established in 2020, we have been a favorite spot for locals and tourists alike. Come and enjoy our cozy atmosphere, exceptional service, and a menu crafted with passion.</p>
         </div>
-        
-        <hr class="my-4" style="border-color: #495057;">
-        
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <p class="mb-0">&copy; 2025 Dribbble. All rights reserved.</p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-            </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <p class="text-center">Have questions or want to make a reservation? Reach out to us!</p>
+            <p class="text-center">Phone: 123-456-7890 | Email: info@deliciouseats.com</p>
+            <p class="text-center">Address: 143 Main Street, Rocky City, FC goa</p>
         </div>
-    </div>
-</footer>
+    </section>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer -->
+    <footer class="footer text-center p-3">
+        <p>&copy;RAHUL RIO S SINCE 2024</p>
+    </footer>
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">About Us</h1>
+        <p>Welcome to Desert Hunters! Established in 2006, our restaurant has been serving fresh and high-quality food to our beloved community. Our chefs are passionate about crafting dishes that not only taste amazing but also leave a lasting impression. From cozy ambiance to exceptional customer service, we are here to make your dining experience unforgettable. Thank you for choosing us!</p>
+        <p>Come visit us and discover the taste of love and dedication in every bite!</p>
+    </div>
+    <footer class="text-center py-3 bg-light">
+        <p>&copy;RAHUL RIO S SINCE 2006</p>
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Contact Us</h1>
+        <p class="text-center">Have questions or want to make a reservation? Reach out to us!</p>
+        <p class="text-center">Phone: 123-456-7890 | Email: info@deserthunters.com</p>
+        <p class="text-center">Address: 143 Middle Street, Rocky City, FC goa</p>
+    </div>
+    <footer class="text-center py-3 bg-light">
+        <p>&copy; RAHUL RIO S SINCE 2024</p>
+    </footer>
+</body>
+</html>
 ```
+    
 
 ## OUTPUT:
 
